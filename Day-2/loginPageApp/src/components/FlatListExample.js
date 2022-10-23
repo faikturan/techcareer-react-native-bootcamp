@@ -17,7 +17,7 @@ class FlatListExample extends Component {
     page: 1,
     contacts: [],
     loading: true,
-    refreshing: false,
+    refreshing: false
   };
 
   componentDidMount() {
