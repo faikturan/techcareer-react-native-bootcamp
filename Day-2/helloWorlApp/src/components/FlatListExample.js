@@ -21,7 +21,7 @@ export class FlatListExample extends Component {
       <TouchableOpacity
         style={[
           styles.itemContainer,
-          {backgroundColor: index % 2 === 1 ? '#fafafa' : ''},
+          {backgroundColor: index % 2 === 1 ? '#fafafa' : ''}
         ]}>
         <Image style={styles.avatar} source={{uri: item.picture}} />
         <View style={styles.textContainer}>
