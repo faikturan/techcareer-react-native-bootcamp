@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {SafeAreaView, StyleSheet} from 'react-native';
 
-import {FlatListExample} from './src/components/FlatListExample';
+import FlatListExample from './src/components/FlatListExample';
 
 export class App extends Component {
   render() {

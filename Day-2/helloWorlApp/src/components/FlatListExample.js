@@ -7,12 +7,13 @@ import {
   View,
   Text,
   FlatList,
+  TextInput,
 } from 'react-native';
 import data from '../../data';
 
-export class FlatListExample extends Component {
+export default class FlatListExample extends Component {
   state = {
-    //text: '',
+    text: '',
     contacts: data,
   };
 
@@ -21,7 +22,7 @@ export class FlatListExample extends Component {
       <TouchableOpacity
         style={[
           styles.itemContainer,
-          {backgroundColor: index % 2 === 1 ? '#fafafa' : ''}
+          {backgroundColor: index % 2 === 1 ? '#fafafa' : ''},
         ]}>
         <Image style={styles.avatar} source={{uri: item.picture}} />
         <View style={styles.textContainer}>
@@ -32,10 +33,42 @@ export class FlatListExample extends Component {
     );
   };
 
+  searchFilter = text => {
+    const newData = data.filter(item => {
+      const listItem = `${item.name.toLowerCase()} ${item.company.toLowerCase()}`;
+
+      return listItem.indexOf(text.toLowerCase()) > -1;
+    });
+
+    this.setState({
+      contacts: newData,
+    });
+  };
+
+  renderHeader = () => {
+    const {text} = this.state;
+    return (
+      <View style={styles.searchContainer}>
+        <TextInput
+          onChangeText={text => {
+            this.setState({
+              text,
+            });
+
+            this.searchFilter(text);
+          }}
+          value={text}
+          placeholder="Search..."
+          style={styles.searchInput}
+        />
+      </View>
+    );
+  };
+
   render() {
     return (
       <FlatList
-        //ListHeaderComponent={this.renderHeader}
+        ListHeaderComponent={this.renderHeader}
         renderItem={this.renderContactItem}
         keyExtractor={item => item._id}
         data={this.state.contacts}
@@ -63,5 +96,13 @@ const styles = StyleSheet.create({
   },
   name: {
     fontSize: 16,
+  },
+  searchContainer: {
+    padding: 10,
+  },
+  searchInput: {
+    fontSize: 16,
+    backgroundColor: '#f9f9f9',
+    padding: 10,
   },
 });
