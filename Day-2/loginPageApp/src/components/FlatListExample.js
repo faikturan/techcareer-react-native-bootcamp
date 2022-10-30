@@ -20,7 +20,7 @@ class FlatListExample extends Component {
     refreshing: false
   };
 
-  componentDidMount() {
+  componentDidMount() { nv
     this.getContacts();
   }
 
