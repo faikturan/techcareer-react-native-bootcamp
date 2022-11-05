@@ -1,6 +1,6 @@
 import React from 'react'
-import { View, Pressable, Text } from 'react-native'
-import styles from "../../styles/";
+import View from 'react-native'
+import styles from "../../styles";
 import UserButton from "../../components/UserButton";
 
 function User({ navigation }) {
@@ -38,4 +38,4 @@ function User({ navigation }) {
   )
 }
 
-export default User
+export default User;
